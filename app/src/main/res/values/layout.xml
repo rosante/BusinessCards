@@ -20,4 +20,12 @@
         <item name="android:layout_height">match_parent</item>
     </style>
 
+    <style name="textView_ColorRow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_margin">3dp</item>
+    </style>
+
 </resources>

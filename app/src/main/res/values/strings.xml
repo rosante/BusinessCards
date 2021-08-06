@@ -8,4 +8,5 @@
     <string name="hint_company_name">Nome da Empresa</string>
     <string name="hint_color">Cor do Cartão</string>
     <string name="label_share">Compatilhar</string>
+    <string name="tv_select_color">Selecione uma cor</string>
 </resources>

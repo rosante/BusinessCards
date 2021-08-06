@@ -19,22 +19,26 @@ import java.util.zip.Inflater
 
 class BusinessCardAdapter : ListAdapter<BusinessCard, BusinessCardAdapter.ViewHolder>(DiffCallback()) {
     var listenerShare: (View) -> Unit = {}
+    var listenerDelete: (View) -> Unit = {}
+    var listenerEnableDelete: (View) -> Unit = {}
 
     inner class ViewHolder(private val binding: ItemBusinessCardBinding)
      : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: BusinessCard){
-            binding.tvNome.text = item.nome
-            binding.tvEmail.text = item.email
-            binding.tvTelefone.text = item.telefone
-            binding.tvNomeEmpresa.text = item.nomeEmpresa
+            binding.tvId.text = " ${item.id.toString()}"
+            binding.tvNome.text = " ${item.nome}"
+            binding.tvEmail.text = " ${item.email}"
+            binding.tvTelefone.text = " ${item.telefone}"
+            binding.tvNomeEmpresa.text = " ${item.nomeEmpresa}"
+            binding.tvNome.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_contact, 0, 0, 0);
+            binding.tvTelefone.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_phone, 0, 0, 0);
+            binding.tvEmail.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_mail, 0, 0, 0);
+            binding.tvNomeEmpresa.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_company, 0, 0, 0);
             binding.cardBusinessCard.setCardBackgroundColor(parseColor(item.corFundo))
             binding.cardBusinessCard.setOnClickListener {listenerShare(it)}
-
+            binding.imgDelete.setOnClickListener {listenerDelete(binding.cardBusinessCard)}
+            binding.cardBusinessCard.setOnLongClickListener {listenerEnableDelete(it); true}
         }
-        val textViewNome: TextView = itemView.findViewById(R.id.tv_nome)
-        val textViewNomeEmpresa: TextView = itemView.findViewById(R.id.tv_nome_empresa)
-        val textViewEmail: TextView = itemView.findViewById(R.id.tv_email)
-        val textViewTelefone: TextView = itemView.findViewById(R.id.tv_telefone)
 
     }
 
